@@ -1,0 +1,233 @@
+.review-hero {
+  background: linear-gradient(135deg, #ffffff, #e3f1fb 65%);
+}
+
+.review-hero__badge {
+  display: flex;
+  align-items: flex-start;
+}
+
+.review-search {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.review-search__hint {
+  font-size: 0.85rem;
+  color: rgba(12, 31, 43, 0.7);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.review-sidebar {
+  padding: 1.75rem;
+}
+
+.review-results {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-card {
+  border: 1px solid rgba(12, 31, 43, 0.12);
+  border-radius: 20px;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.review-card:hover {
+  border-color: var(--gov-accent);
+  transform: translateY(-2px);
+}
+
+.review-card--active {
+  border-color: var(--gov-accent);
+  background: rgba(28, 126, 214, 0.08);
+}
+
+.review-card__email {
+  font-weight: 600;
+  color: var(--gov-deep);
+}
+
+.review-card__meta {
+  font-size: 0.85rem;
+  color: rgba(12, 31, 43, 0.7);
+  margin-top: 0.25rem;
+}
+
+.review-card__chip {
+  margin-top: 0.85rem;
+  display: inline-block;
+}
+
+.review-empty {
+  border: 1px dashed rgba(12, 31, 43, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  color: rgba(12, 31, 43, 0.7);
+}
+
+.review-detail {
+  padding: 1.75rem;
+}
+
+.review-detail__scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .review-detail__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.review-detail__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.review-stat {
+  border-radius: 18px;
+  border: 1px solid rgba(12, 31, 43, 0.12);
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.review-stat__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(12, 31, 43, 0.5);
+}
+
+.review-stat__value {
+  margin-top: 0.35rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gov-deep);
+}
+
+.review-stat__hint {
+  font-size: 0.85rem;
+  color: rgba(12, 31, 43, 0.65);
+}
+
+.review-upload-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-upload-card {
+  border: 1px solid rgba(12, 31, 43, 0.12);
+  border-radius: 24px;
+  padding: 1.5rem;
+  background: rgba(28, 126, 214, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-upload-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.review-upload-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.review-upload-card__meta {
+  font-size: 0.9rem;
+  color: rgba(12, 31, 43, 0.7);
+}
+
+.review-upload-card__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.review-upload-card__grid dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(12, 31, 43, 0.55);
+}
+
+.review-upload-card__grid dd {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: var(--gov-deep);
+}
+
+.review-upload-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .review-upload-card__footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.review-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.review-action__notes {
+  width: 100%;
+}
+
+.review-action__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.gov-btn--success {
+  background: var(--gov-accent);
+}
+
+.ghost-btn--danger {
+  border-color: rgba(180, 35, 24, 0.4);
+  color: #8f1f16;
+}
+
+.ghost-btn--danger:hover {
+  background: rgba(180, 35, 24, 0.12);
+}

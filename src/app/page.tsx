@@ -1,6 +1,6 @@
 import React from "react";
-import { BeerseekerApp } from "@/components/beerseeker/BeerseekerApp";
+import { PromotionalLanding } from "@/components/beerseeker/PromotionalLanding";
 
-const Page = () => <BeerseekerApp />;
+const Page = () => <PromotionalLanding />;
 
 export default Page;

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Beerseeker Portal',
-  description: 'Official Beerseeker entitlement dashboard powered by InstantDB.',
+  title: 'Beerseeker - Find Great Beer Near You',
+  description: 'Discover, explore, and find great beer from breweries and retailers near you. Download the Beerseeker mobile app.',
 };
 
 export default function RootLayout({

@@ -1,44 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --gov-forest: #0b4c7a;
-  --gov-deep: #082945;
-  --gov-surf: #f2f7fb;
-  --gov-panel: #ffffff;
-  --gov-border: rgba(6, 34, 58, 0.16);
-  --gov-shadow: 0 25px 60px rgba(3, 23, 40, 0.16);
-  --gov-accent: #1c7ed6;
-  --gov-accent-soft: rgba(28, 126, 214, 0.12);
-  --gov-gold: #7dc9ff;
-  --gov-text: #0a2031;
+  --primary: #FFBF00;
+  --primary-muted: #FFBF0022;
+  --secondary: #D4AF37;
+  --tertiary: #704214;
+  --background: #0F0F0F;
+  --surface: #1A1A1A;
+  --surface-alt: #242424;
+  --border: #D4AF3733;
+  --headline: #F5F3EC;
+  --body: #B9B4A6;
+  --muted: #7A756A;
 }
 
 @theme inline {
-  --color-background: var(--gov-surf);
-  --color-foreground: var(--gov-text);
+  --color-background: var(--background);
+  --color-foreground: var(--headline);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-geist-sans), "Source Sans Pro", "Helvetica Neue", sans-serif;
   min-height: 100vh;
-  background-color: var(--gov-surf);
-  color: var(--gov-text);
+  background-color: var(--background);
+  color: var(--body);
   position: relative;
   overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(28, 126, 214, 0.08), transparent 40%),
-    radial-gradient(circle at 80% 0%, rgba(2, 75, 133, 0.08), transparent 35%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(235, 245, 255, 0.9));
-  pointer-events: none;
-  z-index: 0;
 }
 
 .gov-surface {

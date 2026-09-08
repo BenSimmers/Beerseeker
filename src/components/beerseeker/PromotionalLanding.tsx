@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Compass, MapPin, Download, Users } from 'lucide-react';
+import React, { useState } from 'react';
+import { Compass, MapPin, Download, Users, X } from 'lucide-react';
 
 const SITE_CONFIG = {
   nav: {
@@ -75,14 +75,21 @@ const SITE_CONFIG = {
   footer: {
     copyright: '© 2026 Beer Seeker. All rights reserved.',
     links: [
-      { label: 'Privacy', href: '#' },
-      { label: 'Terms', href: '#' },
-      { label: 'Contact', href: '#' },
+      { label: 'Privacy', href: 'https://gist.github.com/BenSimmers/bcc72b07118544af6491c932db773eed#file-privacy-policy-md' },
+      { label: 'Terms', href: 'https://gist.github.com/BenSimmers/bcc72b07118544af6491c932db773eed#file-privacy-policy-md' },
+      { label: 'Contact', href: 'mailto:bej1380@gmail.com' },
     ],
   },
 };
 
 export const PromotionalLanding = () => {
+  const [showAndroidDialog, setShowAndroidDialog] = useState(false);
+
+  const handleGooglePlayClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowAndroidDialog(true);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
@@ -164,6 +171,7 @@ export const PromotionalLanding = () => {
               <a
                 key={button.label}
                 href={button.href}
+                onClick={button.label === 'Google Play' ? handleGooglePlayClick : undefined}
                 className={`inline-flex items-center justify-center gap-2 px-8 py-3 rounded font-semibold transition ${
                   button.variant === 'light'
                     ? 'bg-white text-black hover:bg-gray-200'
@@ -199,6 +207,50 @@ export const PromotionalLanding = () => {
           </div>
         </div>
       </footer>
+
+      {/* Android Development Dialog */}
+      {showAndroidDialog && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-gray-900 border border-amber-500/30 rounded-lg max-w-md w-full p-8">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-amber-400">Android Coming Soon</h3>
+              <button
+                onClick={() => setShowAndroidDialog(false)}
+                className="text-gray-400 hover:text-amber-400 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-gray-300">
+                We're actively developing Beerseeker for Android and would love your help with testing!
+              </p>
+
+              <p className="text-gray-400">
+                If you're interested in becoming a beta tester, please reach out to us:
+              </p>
+
+              <div className="bg-gray-800 border border-amber-500/20 rounded p-4">
+                <p className="text-amber-400 font-semibold break-all">
+                  bej1380@gmail.com
+                </p>
+              </div>
+
+              <p className="text-sm text-gray-400">
+                In the meantime, grab the iOS version on the App Store to start exploring!
+              </p>
+            </div>
+
+            <button
+              onClick={() => setShowAndroidDialog(false)}
+              className="w-full mt-6 bg-amber-400 text-black px-6 py-2 rounded font-semibold hover:bg-amber-300 transition"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

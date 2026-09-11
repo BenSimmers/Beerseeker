@@ -93,15 +93,15 @@ export const PromotionalLanding = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="border-b border-amber-500/20 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold tracking-tight">
+      <nav className="border-b border-amber-500/20 px-4 sm:px-6 py-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+          <div className="text-xl sm:text-2xl font-bold tracking-tight shrink-0">
             <span className="text-amber-400">{SITE_CONFIG.nav.logo.light}</span>
             <span>{SITE_CONFIG.nav.logo.dark}</span>
           </div>
-          <div className="flex gap-6 text-sm">
+          <div className="hidden md:flex gap-4 lg:gap-6 text-xs sm:text-sm">
             {SITE_CONFIG.nav.links.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-amber-400 transition">
+              <a key={link.href} href={link.href} className="hover:text-amber-400 transition whitespace-nowrap">
                 {link.label}
               </a>
             ))}
@@ -110,20 +110,20 @@ export const PromotionalLanding = () => {
       </nav>
 
       {/* Hero */}
-      <section className="px-6 py-24 border-b border-amber-500/20">
+      <section className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6 inline-block">
-            <Compass className="w-16 h-16 text-amber-400" strokeWidth={1.5} />
+            <Compass className="w-12 sm:w-16 h-12 sm:h-16 text-amber-400" strokeWidth={1.5} />
           </div>
-          <h1 className="text-5xl font-bold tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
             {SITE_CONFIG.hero.title}
           </h1>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
             {SITE_CONFIG.hero.subtitle}
           </p>
           <a
             href="#download"
-            className="inline-block bg-amber-400 text-black px-8 py-3 rounded font-semibold hover:bg-amber-300 transition"
+            className="inline-block bg-amber-400 text-black px-6 sm:px-8 py-2 sm:py-3 rounded font-semibold hover:bg-amber-300 transition text-sm sm:text-base"
           >
             {SITE_CONFIG.hero.cta}
           </a>
@@ -134,20 +134,20 @@ export const PromotionalLanding = () => {
       {SITE_CONFIG.sections.map((section) => {
         const IconComponent = section.icon;
         return (
-          <section key={section.id} id={section.id} className="px-6 py-24 border-b border-amber-500/20">
+          <section key={section.id} id={section.id} className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20">
             <div className="max-w-3xl mx-auto">
-              <div className="flex justify-center mb-8">
-                <div className="w-16 h-16 rounded-full border border-amber-500/40 bg-gray-900/50 flex items-center justify-center text-amber-400">
-                  <IconComponent className="w-8 h-8" strokeWidth={1.5} />
+              <div className="flex justify-center mb-6 sm:mb-8">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-amber-500/40 bg-gray-900/50 flex items-center justify-center text-amber-400">
+                  <IconComponent className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.5} />
                 </div>
               </div>
-              <h2 className="text-3xl font-bold text-center mb-6">{section.title}</h2>
-              <div className="flex justify-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 px-2">{section.title}</h2>
+              <div className="flex justify-center mb-6 sm:mb-8">
                 <div className="w-11 h-0.5 bg-amber-500/40" />
               </div>
-              <div className="space-y-4 text-center">
+              <div className="space-y-3 sm:space-y-4 text-center px-2">
                 {section.body.map((paragraph) => (
-                  <p key={paragraph} className="text-gray-400 leading-relaxed">
+                  <p key={paragraph} className="text-sm sm:text-base text-gray-400 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
@@ -158,27 +158,27 @@ export const PromotionalLanding = () => {
       })}
 
       {/* Download CTA */}
-      <section id="download" className="px-6 py-24">
+      <section id="download" className="px-4 sm:px-6 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 sm:mb-6 px-2">
             {SITE_CONFIG.download.title}
           </h2>
-          <p className="text-gray-400 mb-8">
+          <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-8 px-2">
             {SITE_CONFIG.download.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2">
             {SITE_CONFIG.download.buttons.map((button) => (
               <a
                 key={button.label}
                 href={button.href}
                 onClick={button.label === 'Google Play' ? handleGooglePlayClick : undefined}
-                className={`inline-flex items-center justify-center gap-2 px-8 py-3 rounded font-semibold transition ${
+                className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2 sm:py-3 rounded font-semibold transition text-sm sm:text-base ${
                   button.variant === 'light'
                     ? 'bg-white text-black hover:bg-gray-200'
                     : 'bg-amber-400 text-black hover:bg-amber-300'
                 }`}
               >
-                <Download className="w-5 h-5" />
+                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                 {button.label}
               </a>
             ))}
@@ -187,13 +187,13 @@ export const PromotionalLanding = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-amber-500/20 px-6 py-8">
+      <footer className="border-t border-amber-500/20 px-4 sm:px-6 py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-gray-500 mb-4 md:mb-0">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div className="text-xs sm:text-sm text-gray-500">
               {SITE_CONFIG.footer.copyright}
             </div>
-            <div className="flex gap-6 text-sm">
+            <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm">
               {SITE_CONFIG.footer.links.map((link) => (
                 <a
                   key={link.label}

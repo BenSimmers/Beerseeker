@@ -1,0 +1,41 @@
+{
+  "name": "Beerseeker - Find Great Beer Near You",
+  "short_name": "Beerseeker",
+  "description": "Your travel compass for discovering great beer, pubs, breweries, and wine bars anywhere you go.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#FCD34D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["travel", "lifestyle"],
+  "keywords": ["beer", "finder", "pub", "brewery", "travel", "compass"],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/au/app/beer-seeker/id6776191099"
+    }
+  ]
+}

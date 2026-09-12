@@ -1,0 +1,13 @@
+/* TEAM */
+  Team: Beerseeker Team
+  Contact: bej1380@gmail.com
+  Website: https://beerseeker.org
+
+/* THANKS */
+  Thanks to everyone who supports Beerseeker!
+
+/* SITE */
+  Last Update: 2026-09-12
+  Standards: HTML5, CSS3
+  Components: Next.js, React, Tailwind CSS
+  Language: English

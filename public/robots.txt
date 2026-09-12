@@ -1,0 +1,13 @@
+# Beerseeker - Allow all crawlers
+User-agent: *
+Allow: /
+
+# Specific directives
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://beerseeker.org/sitemap.xml
+
+# Crawl delay (allow aggressive crawling)
+Crawl-delay: 0

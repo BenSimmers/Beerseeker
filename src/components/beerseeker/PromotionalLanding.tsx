@@ -19,7 +19,7 @@ const SITE_CONFIG = {
   },
   hero: {
     title: 'Your compass for travel',
-    subtitle: 'Explore new places on your journey. Find amazing pubs, bars, breweries and wine bars anywhere you go. Point the phone, follow the needle, arrive thirsty.',
+    subtitle: 'Explore new places on your journey. Find amazing pubs, bars, breweries and wine bars anywhere you go. Point the phone and follow the needle.',
     cta: 'Download Now',
   },
   sections: [

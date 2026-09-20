@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Compass, MapPin, Download, Users, X } from 'lucide-react';
+import { AndroidBetaForm } from './AndroidBetaForm';
 
 const SITE_CONFIG = {
   nav: {
@@ -287,14 +288,10 @@ export const PromotionalLanding = () => {
               </p>
 
               <p className="text-gray-400">
-                If you're interested in becoming a beta tester, please reach out to us:
+                If you're interested in becoming a beta tester, leave your email below and we'll get in touch:
               </p>
 
-              <div className="bg-gray-800 border border-amber-500/20 rounded p-4">
-                <p className="text-amber-400 font-semibold break-all">
-                  bej1380@gmail.com
-                </p>
-              </div>
+              <AndroidBetaForm />
 
               <p className="text-sm text-gray-400">
                 In the meantime, grab the iOS version on the App Store to start exploring!

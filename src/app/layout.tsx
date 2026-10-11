@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = 'https://beerseeker.org';
 const SITE_NAME = 'Beerseeker';
-const SITE_DESCRIPTION = 'Your travel compass for discovering great beer, pubs, breweries, and wine bars anywhere you go. Download the Beerseeker mobile app for iOS and Android.';
+const SITE_DESCRIPTION = 'Like the tavern signs of old, Beerseeker points travellers to pubs, breweries, wine bars and places to eat and drink anywhere they go. Download the app for iOS and Android.';
 const IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export const metadata: Metadata = {
@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     'location based',
     'compass navigation',
     'mobile app',
+    'find friends',
+    'location sharing',
+    'travel mode',
   ],
   referrer: 'strict-origin-when-cross-origin',
   themeColor: '#000000',
@@ -144,6 +147,16 @@ const softwareAppSchema = {
     ratingCount: '1200',
   },
   operatingSystem: 'iOS, Android',
+  featureList: [
+    'Compass that points to the nearest pub, bar, brewery or bottle shop',
+    'Browse and filter venues nearby',
+    'Favourites',
+    'Travel mode',
+    'Follow friends and share your location for a set time',
+    'Point the compass at a friend',
+    'Friends map',
+    'Groups',
+  ],
   downloadUrl: [
     'https://apps.apple.com/au/app/beer-seeker/id6776191099',
   ],

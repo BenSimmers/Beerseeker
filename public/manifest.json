@@ -1,7 +1,7 @@
 {
   "name": "Beerseeker - Find Great Beer Near You",
   "short_name": "Beerseeker",
-  "description": "Your travel compass for discovering great beer, pubs, breweries, and wine bars anywhere you go.",
+  "description": "Like the tavern signs of old, Beerseeker points travellers to pubs and places to eat and drink anywhere they go.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -1,86 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Compass, MapPin, Download, Users, X } from 'lucide-react';
+import { Compass, Download, X } from 'lucide-react';
 import { AndroidBetaForm } from './AndroidBetaForm';
+import { SITE_CONFIG, type Feature } from './siteConfig';
 
-const SITE_CONFIG = {
-  nav: {
-    logo: {
-      light: 'beer',
-      dark: 'seeker',
-    },
-    links: [
-      { href: '#about', label: 'Beerseeker' },
-      { href: '#explore', label: 'Browse' },
-      { href: '#compass', label: 'Compass' },
-      { href: '#hello', label: 'About Us' },
-      { href: '#download', label: 'Download' },
-    ],
-  },
-  hero: {
-    title: 'Your compass for travel',
-    subtitle: 'Explore new places on your journey. Find amazing pubs, bars, breweries and wine bars anywhere you go. Point the phone and follow the needle.',
-    cta: 'Download Now',
-  },
-  sections: [
-     {
-      id: 'about',
-      icon: Compass,
-      title: 'Beerseeker',
-      body: [
-        'Your travel companion for discovering great drinks anywhere.',
-        "Whether you're exploring a new city, on a road trip, or just wandering your local area, Beerseeker guides you to the best pubs, bars, breweries and wine bars nearby.",
-      ],
-    },
-
-    {
-      id: 'hello',
-      icon: Users,
-      title: 'About Us',
-      body: [
-        "Hi, we're the creators of the beer seeker app",
-        "We're massive history buffs. One fact we love was that in the Middle Ages most people couldn't read, so they navigated by landmarks instead - a sign had to be vivid enough for anyone to recognise at a glance, which is why England still has The Blue Boar, The White Hart and The King's Head.",
-        'A habit the Romans started, hanging vine leaves outside a tavern to show it sold wine.',
-        "That's where Beer Seeker came from. We built it as a return to true form for travelling and looking for pubs and places to eat and drink",
-      ],
-    },
-   
-    {
-      id: 'explore',
-      icon: MapPin,
-      title: 'Explore & Browse',
-      body: [
-        'Find pubs, bars, sports bars, breweries, wine bars, bottle shops and bottle-os nearby - all sorted by distance.',
-        'Filter by venue type or search by name. View ratings, opening hours, phone numbers and directions for every spot.',
-      ],
-    },
-    {
-      id: 'compass',
-      icon: Compass,
-      title: 'The Compass',
-      body: [
-        "The needle reads your device's magnetometer and swings to the closest pub, bar, brewery, wine bar or bottle shop. It turns as you move, always pointing to the nearest drink.",
-        'Tap the map underneath for a closer look, or switch between the Modern and Classic faces in Settings.',
-      ],
-    },
-  ],
-  download: {
-    title: 'Get Started',
-    subtitle: 'Download Beerseeker on iOS or Android and start your journey.',
-    buttons: [
-      { label: 'App Store', href: 'https://apps.apple.com/au/app/beer-seeker/id6776191099', variant: 'light' },
-      { label: 'Google Play', href: '#', variant: 'amber' },
-    ],
-  },
-  footer: {
-    copyright: '© 2026 Beer Seeker. All rights reserved.',
-    links: [
-      { label: 'Privacy', href: 'https://gist.github.com/BenSimmers/bcc72b07118544af6491c932db773eed#file-privacy-policy-md' },
-      { label: 'Terms', href: 'https://gist.github.com/BenSimmers/bcc72b07118544af6491c932db773eed#file-privacy-policy-md' },
-      { label: 'Contact', href: 'mailto:bej1380@gmail.com' },
-    ],
-  },
+const FeatureCard = ({ feature }: { feature: Feature }) => {
+  const IconComponent = feature.icon;
+  return (
+    <li className="rounded-lg border border-amber-500/20 bg-gray-900/50 p-5 sm:p-6">
+      <div className="flex items-center gap-3 mb-3">
+        <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+        <h3 className="text-base sm:text-lg font-semibold">{feature.title}</h3>
+      </div>
+      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">{feature.text}</p>
+    </li>
+  );
 };
 
 export const PromotionalLanding = () => {
@@ -93,7 +28,6 @@ export const PromotionalLanding = () => {
 
   return (
     <div className="min-h-screen bg-black text-white" id="main-content">
-      {/* Skip to main content link for keyboard navigation */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-amber-400 focus:text-black focus:p-2 focus:z-50 focus:font-semibold"
@@ -101,7 +35,6 @@ export const PromotionalLanding = () => {
         Skip to main content
       </a>
 
-      {/* Navigation */}
       <nav className="border-b border-amber-500/20 px-4 sm:px-6 py-4" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
           <a
@@ -181,10 +114,45 @@ export const PromotionalLanding = () => {
                   </p>
                 ))}
               </div>
+              {section.highlights && (
+                <ul className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  {section.highlights.map((item) => (
+                    <FeatureCard key={item.title} feature={item} />
+                  ))}
+                </ul>
+              )}
             </div>
           </section>
         );
       })}
+
+      {/* Feature Grid */}
+      <section
+        id={SITE_CONFIG.features.id}
+        className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20"
+        aria-labelledby={`${SITE_CONFIG.features.id}-heading`}
+        role="region"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h2
+            id={`${SITE_CONFIG.features.id}-heading`}
+            className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 px-2"
+          >
+            {SITE_CONFIG.features.title}
+          </h2>
+          <div className="flex justify-center mb-6 sm:mb-8">
+            <div className="w-11 h-0.5 bg-amber-500/40" />
+          </div>
+          <p className="text-sm sm:text-base text-gray-400 text-center mb-10 sm:mb-12 px-2">
+            {SITE_CONFIG.features.subtitle}
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {SITE_CONFIG.features.items.map((item) => (
+              <FeatureCard key={item.title} feature={item} />
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* Download CTA */}
       <section

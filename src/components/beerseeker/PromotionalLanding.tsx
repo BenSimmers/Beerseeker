@@ -1,226 +1,253 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Compass, Download, X } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowDown, ArrowUpRight, Compass, X } from 'lucide-react';
 import { AndroidBetaForm } from './AndroidBetaForm';
 import { SITE_CONFIG, type Feature } from './siteConfig';
 
-const FeatureCard = ({ feature }: { feature: Feature }) => {
-  const IconComponent = feature.icon;
+const FeatureItem = ({ feature }: { feature: Feature }) => {
+  const Icon = feature.icon;
   return (
-    <li className="rounded-lg border border-amber-500/20 bg-gray-900/50 p-5 sm:p-6">
-      <div className="flex items-center gap-3 mb-3">
-        <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 shrink-0" strokeWidth={1.5} aria-hidden="true" />
-        <h3 className="text-base sm:text-lg font-semibold">{feature.title}</h3>
+    <li className="feature-item">
+      <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
+      <div>
+        <h3>{feature.title}</h3>
+        <p>{feature.text}</p>
       </div>
-      <p className="text-sm sm:text-base text-gray-400 leading-relaxed">{feature.text}</p>
     </li>
   );
 };
 
+const CompassIllustration = () => (
+  <figure
+    className="compass-plate"
+    aria-label="Illustration of a compass pointing towards the pub"
+  >
+    <div className="plate-caption">
+      <span>A little less scrolling.</span>
+      <span>A little more wandering.</span>
+    </div>
+    <div className="compass-dial" aria-hidden="true">
+      <span className="direction north">N</span>
+      <span className="direction east">E</span>
+      <span className="direction south">S</span>
+      <span className="direction west">W</span>
+      <div className="dial-inner" />
+      <div className="dial-cross horizontal" />
+      <div className="dial-cross vertical" />
+      <div className="needle">
+        <div />
+        <div />
+      </div>
+      <div className="needle-pin" />
+      <span className="dial-wordmark">BEER SEEKER</span>
+    </div>
+    <figcaption>
+      <span className="small-label">Your next stop</span>
+      <span className="pub-caption">
+        Your next pub.
+        <br />
+        <em>This way.</em>
+      </span>
+      <span className="plate-footnote">
+        Pubs · Bars · Breweries · Good company
+      </span>
+    </figcaption>
+  </figure>
+);
+
 export const PromotionalLanding = () => {
   const [showAndroidDialog, setShowAndroidDialog] = useState(false);
-
-  const handleGooglePlayClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setShowAndroidDialog(true);
-  };
-
+  const sections = SITE_CONFIG.sections.filter(
+    (section) => !['about', 'hello'].includes(section.id),
+  );
   return (
-    <div className="min-h-screen bg-black text-white" id="main-content">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-amber-400 focus:text-black focus:p-2 focus:z-50 focus:font-semibold"
-      >
+    <div className="beer-site">
+      <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-
-      <nav className="border-b border-amber-500/20 px-4 sm:px-6 py-4" aria-label="Main navigation">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-          <a
-            href="/"
-            className="text-xl sm:text-2xl font-bold tracking-tight shrink-0 hover:opacity-80 transition focus-visible:rounded"
-            aria-label="Beerseeker - Home"
-          >
-            <span className="text-amber-400">{SITE_CONFIG.nav.logo.light}</span>
-            <span>{SITE_CONFIG.nav.logo.dark}</span>
-          </a>
-          <div className="hidden md:flex gap-4 lg:gap-6 text-xs sm:text-sm">
-            {SITE_CONFIG.nav.links.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-amber-400 transition whitespace-nowrap">
-                {link.label}
-              </a>
-            ))}
+      <header className="site-header wrap">
+        <Link className="wordmark" href="/" aria-label="Beer Seeker home">
+          beer<span>seeker</span>
+        </Link>
+        <nav aria-label="Main navigation">
+          <a href="#explore">The app</a>
+          <a href="#groups">Pub crawls</a>
+          <a href="#hello">Our story</a>
+        </nav>
+        <a className="header-download" href="#download">
+          Get the app <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </header>
+      <main id="main-content">
+        <section className="hero wrap" aria-labelledby="hero-title">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              For the pub. For the people. For the wander.
+            </p>
+            <h1 id="hero-title">
+              There’s a good
+              <br />
+              pub <em>that way.</em>
+            </h1>
+            <p className="hero-description">
+              In a new city or just around the corner. Find a pub, round up your
+              mates, and let the compass take you there.
+            </p>
+            <a className="button" href={SITE_CONFIG.download.buttons[0].href}>
+              Get Beer Seeker for iOS{' '}
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </a>
+            <button
+              className="text-link android-link"
+              onClick={() => setShowAndroidDialog(true)}
+            >
+              On Android? Join the beta list.
+            </button>
           </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section
-        className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20"
-        aria-label="Hero section - Your compass for travel"
-        role="region"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-6 inline-block" aria-hidden="true">
-            <Compass className="w-12 sm:w-16 h-12 sm:h-16 text-amber-400" strokeWidth={1.5} />
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
-            {SITE_CONFIG.hero.title}
-          </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
-            {SITE_CONFIG.hero.subtitle}
-          </p>
-          <a
-            href="#download"
-            className="inline-block bg-amber-400 text-black px-6 sm:px-8 py-2 sm:py-3 rounded font-semibold hover:bg-amber-300 transition text-sm sm:text-base focus-visible:outline-2 focus-visible:outline-offset-2"
-            aria-label="Download Beerseeker app now"
-          >
-            {SITE_CONFIG.hero.cta}
+          <CompassIllustration />
+          <a className="hero-scroll small-label" href="#explore">
+            A look around <ArrowDown size={15} aria-hidden="true" />
           </a>
+        </section>
+        <div className="venue-strip" aria-hidden="true">
+          <span>A local you haven’t met yet.</span>
+          <span className="venue-separator">✳</span>
+          <span>The next round’s out there.</span>
+          <span className="venue-separator">✳</span>
+          <span>Follow your thirst.</span>
+          <span className="venue-separator">✳</span>
         </div>
-      </section>
-
-      {/* Content Sections */}
-      {SITE_CONFIG.sections.map((section) => {
-        const IconComponent = section.icon;
-        return (
-          <section
-            key={section.id}
-            id={section.id}
-            className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20"
-            aria-labelledby={`${section.id}-heading`}
-            role="region"
-          >
-            <div className="max-w-3xl mx-auto">
-              <div className="flex justify-center mb-6 sm:mb-8" aria-hidden="true">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-amber-500/40 bg-gray-900/50 flex items-center justify-center text-amber-400">
-                  <IconComponent className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.5} />
-                </div>
+        <div className="wrap chapters">
+          {sections.map((section, index) => (
+            <section
+              className={`chapter chapter-${section.id}`}
+              id={section.id}
+              key={section.id}
+              aria-labelledby={`${section.id}-heading`}
+            >
+              <div className="chapter-label small-label">
+                <span>0{index + 1}</span>
+                <span>
+                  {
+                    (
+                      {
+                        explore: 'Find your local',
+                        compass: 'Take a bearing',
+                        friends: 'Bring your mates',
+                        groups: 'Make a night of it',
+                      } as Record<string, string>
+                    )[section.id]
+                  }
+                </span>
               </div>
-              <h2
-                id={`${section.id}-heading`}
-                className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 px-2"
-              >
-                {section.title}
-              </h2>
-              <div className="flex justify-center mb-6 sm:mb-8">
-                <div className="w-11 h-0.5 bg-amber-500/40" />
-              </div>
-              <div className="space-y-3 sm:space-y-4 text-center px-2">
-                {section.body.map((paragraph) => (
-                  <p key={paragraph} className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-              {section.highlights && (
-                <ul className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  {section.highlights.map((item) => (
-                    <FeatureCard key={item.title} feature={item} />
+              <div className="chapter-content">
+                <h2 id={`${section.id}-heading`}>{section.title}</h2>
+                <div className="chapter-body">
+                  {section.body.map((p) => (
+                    <p key={p}>{p}</p>
                   ))}
-                </ul>
-              )}
+                </div>
+                {section.highlights && (
+                  <ul className="feature-list">
+                    {section.highlights.map((item) => (
+                      <FeatureItem key={item.title} feature={item} />
+                    ))}
+                  </ul>
+                )}
+                {section.id === 'compass' && (
+                  <p className="margin-note">
+                    <Compass size={24} strokeWidth={1} aria-hidden="true" />
+                    Pick a place. Follow the needle. See where you end up.
+                  </p>
+                )}
+              </div>
+            </section>
+          ))}
+          <section
+            id="features"
+            className="essentials"
+            aria-labelledby="features-heading"
+          >
+            <div>
+              <p className="small-label">A few things for the road</p>
+              <h2 id="features-heading">
+                Packed for
+                <br />
+                <em>the journey.</em>
+              </h2>
+            </div>
+            <ul className="feature-list">
+              {SITE_CONFIG.features.items.map((item) => (
+                <FeatureItem key={item.title} feature={item} />
+              ))}
+            </ul>
+          </section>
+          <section id="hello" className="story" aria-labelledby="story-heading">
+            <p className="small-label">A note from the makers</p>
+            <h2 id="story-heading">
+              It started with
+              <br />a pub sign.
+            </h2>
+            <div>
+              <p>
+                We’re Ben, Josh and Sam. We’re massive history buffs, and we’ve
+                always loved the way travellers found an inn before street names
+                and smartphones: look for the sign.
+              </p>
+              <p>
+                The White Hart. The Blue Boar. The King’s Head. A landmark you
+                could recognise, even if you couldn’t read.
+              </p>
+              <p>
+                Beer Seeker is our take on that idea. A small app to help you
+                find a place, take a walk, and meet your company.
+              </p>
             </div>
           </section>
-        );
-      })}
-
-      {/* Feature Grid */}
-      <section
-        id={SITE_CONFIG.features.id}
-        className="px-4 sm:px-6 py-16 sm:py-24 border-b border-amber-500/20"
-        aria-labelledby={`${SITE_CONFIG.features.id}-heading`}
-        role="region"
-      >
-        <div className="max-w-5xl mx-auto">
-          <h2
-            id={`${SITE_CONFIG.features.id}-heading`}
-            className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 px-2"
-          >
-            {SITE_CONFIG.features.title}
-          </h2>
-          <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="w-11 h-0.5 bg-amber-500/40" />
-          </div>
-          <p className="text-sm sm:text-base text-gray-400 text-center mb-10 sm:mb-12 px-2">
-            {SITE_CONFIG.features.subtitle}
-          </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {SITE_CONFIG.features.items.map((item) => (
-              <FeatureCard key={item.title} feature={item} />
-            ))}
-          </ul>
         </div>
-      </section>
-
-      {/* Download CTA */}
-      <section
-        id="download"
-        className="px-4 sm:px-6 py-16 sm:py-24"
-        aria-labelledby="download-heading"
-        role="region"
-      >
-        <div className="max-w-2xl mx-auto text-center">
-          <h2
-            id="download-heading"
-            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 sm:mb-6 px-2"
-          >
-            {SITE_CONFIG.download.title}
-          </h2>
-          <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-8 px-2">
-            {SITE_CONFIG.download.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2">
-            {SITE_CONFIG.download.buttons.map((button) => (
-              <a
-                key={button.label}
-                href={button.href}
-                onClick={button.label === 'Google Play' ? handleGooglePlayClick : undefined}
-                className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2 sm:py-3 rounded font-semibold transition text-sm sm:text-base focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                  button.variant === 'light'
-                    ? 'bg-white text-black hover:bg-gray-200'
-                    : 'bg-amber-400 text-black hover:bg-amber-300'
-                }`}
-                aria-label={
-                  button.label === 'App Store'
-                    ? 'Download Beerseeker from Apple App Store'
-                    : 'Download Beerseeker from Google Play Store'
-                }
-              >
-                <Download className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-                {button.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer
-        className="border-t border-amber-500/20 px-4 sm:px-6 py-8"
-        role="contentinfo"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <div className="text-xs sm:text-sm text-gray-500">
-              {SITE_CONFIG.footer.copyright}
+        <section
+          id="download"
+          className="download-section"
+          aria-labelledby="download-heading"
+        >
+          <div className="wrap download-inner">
+            <div>
+              <p className="small-label">Your next local is waiting</p>
+              <h2 id="download-heading">Shall we?</h2>
             </div>
-            <nav className="flex gap-4 sm:gap-6 text-xs sm:text-sm" aria-label="Footer">
-              {SITE_CONFIG.footer.links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-gray-500 hover:text-amber-400 transition focus-visible:text-amber-400 focus-visible:outline-2 focus-visible:outline-offset-2"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
+            <div>
+              <a
+                className="button button-paper"
+                href={SITE_CONFIG.download.buttons[0].href}
+              >
+                Download for iOS <ArrowUpRight size={20} aria-hidden="true" />
+              </a>
+              <button
+                className="text-link"
+                onClick={() => setShowAndroidDialog(true)}
+              >
+                Android beta signup{' '}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </button>
+            </div>
           </div>
-        </div>
+        </section>
+      </main>
+      <footer className="site-footer wrap">
+        <Link className="wordmark" href="/">
+          beer<span>seeker</span>
+        </Link>
+        <p>{SITE_CONFIG.footer.copyright}</p>
+        <nav aria-label="Footer">
+          {SITE_CONFIG.footer.links.map((link) => (
+            <a href={link.href} key={link.label}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
       </footer>
-
       {/* Android Development Dialog */}
       {showAndroidDialog && (
         <div
@@ -252,17 +279,20 @@ export const PromotionalLanding = () => {
 
             <div className="space-y-4" id="android-dialog-description">
               <p className="text-gray-300">
-                We're actively developing Beerseeker for Android and would love your help with testing!
+                We&apos;re actively developing Beerseeker for Android and would
+                love your help with testing!
               </p>
 
               <p className="text-gray-400">
-                If you're interested in becoming a beta tester, leave your email below and we'll get in touch:
+                If you&apos;re interested in becoming a beta tester, leave your
+                email below and we&apos;ll get in touch:
               </p>
 
               <AndroidBetaForm />
 
               <p className="text-sm text-gray-400">
-                In the meantime, grab the iOS version on the App Store to start exploring!
+                In the meantime, grab the iOS version on the App Store to start
+                exploring!
               </p>
             </div>
 

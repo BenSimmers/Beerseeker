@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = 'https://beerseeker.org';
 const SITE_NAME = 'Beerseeker';
-const SITE_DESCRIPTION = 'Like the tavern signs of old, Beerseeker points travellers to pubs, breweries, wine bars and places to eat and drink anywhere they go. Download the app for iOS and Android.';
+const SITE_DESCRIPTION =
+  'Like the tavern signs of old, Beerseeker points travellers to pubs, breweries, wine bars and places to eat and drink anywhere they go. Download the app for iOS and Android.';
 const IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export const metadata: Metadata = {
@@ -105,9 +106,9 @@ export const metadata: Metadata = {
     },
   },
   formatDetection: {
-    telephone: true,
-    email: true,
-    address: true,
+    telephone: false,
+    email: false,
+    address: false,
   },
 };
 
@@ -119,9 +120,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.svg`,
   description: SITE_DESCRIPTION,
-  sameAs: [
-    'https://apps.apple.com/au/app/beer-seeker/id6776191099',
-  ],
+  sameAs: ['https://apps.apple.com/au/app/beer-seeker/id6776191099'],
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Support',
@@ -157,9 +156,7 @@ const softwareAppSchema = {
     'Friends map',
     'Groups',
   ],
-  downloadUrl: [
-    'https://apps.apple.com/au/app/beer-seeker/id6776191099',
-  ],
+  downloadUrl: ['https://apps.apple.com/au/app/beer-seeker/id6776191099'],
 };
 
 const websiteSchema = {
@@ -189,11 +186,15 @@ export default function RootLayout({
         {/* JSON-LD Schema Markup */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(softwareAppSchema),
+          }}
         />
         <script
           type="application/ld+json"
@@ -209,7 +210,10 @@ export default function RootLayout({
 
         {/* Apple mobile web app meta tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <meta name="apple-mobile-web-app-title" content="Beerseeker" />
 
         {/* Alternative language versions */}

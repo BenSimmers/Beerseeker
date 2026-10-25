@@ -33,10 +33,14 @@ export const AndroidBetaForm = () => {
       }
 
       const data = await response.json().catch(() => null);
-      setError(data?.errors?.[0]?.message ?? 'Something went wrong. Please try again.');
+      setError(
+        data?.errors?.[0]?.message ?? 'Something went wrong. Please try again.',
+      );
       setStatus('error');
     } catch {
-      setError('Could not reach the server. Please check your connection and try again.');
+      setError(
+        'Could not reach the server. Please check your connection and try again.',
+      );
       setStatus('error');
     }
   };
@@ -57,7 +61,9 @@ export const AndroidBetaForm = () => {
         className="bg-gray-800 border border-amber-500/20 rounded p-4 text-center"
         role="status"
       >
-        <p className="text-amber-400 font-semibold mb-1">Thanks for signing up!</p>
+        <p className="text-amber-400 font-semibold mb-1">
+          Thanks for signing up!
+        </p>
         <p className="text-sm text-gray-400">
           We&apos;ll be in touch when the Android beta is ready.
         </p>
@@ -68,7 +74,10 @@ export const AndroidBetaForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-3" noValidate={false}>
       <div>
-        <label htmlFor="beta-email" className="block text-sm text-gray-400 mb-1">
+        <label
+          htmlFor="beta-email"
+          className="block text-sm text-gray-400 mb-1"
+        >
           Email address
         </label>
         <input
@@ -84,7 +93,10 @@ export const AndroidBetaForm = () => {
       </div>
 
       <div>
-        <label htmlFor="beta-message" className="block text-sm text-gray-400 mb-1">
+        <label
+          htmlFor="beta-message"
+          className="block text-sm text-gray-400 mb-1"
+        >
           Message <span className="text-gray-500">(optional)</span>
         </label>
         <textarea
@@ -98,7 +110,11 @@ export const AndroidBetaForm = () => {
       </div>
 
       {/* Subject line shown in the Formspree notification email */}
-      <input type="hidden" name="_subject" value="Beerseeker Android beta tester signup" />
+      <input
+        type="hidden"
+        name="_subject"
+        value="Beerseeker Android beta tester signup"
+      />
 
       {status === 'error' && (
         <p className="text-sm text-red-400" role="alert">

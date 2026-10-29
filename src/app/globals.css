@@ -481,6 +481,73 @@ h2 {
   gap: 20px;
   font-size: 11px;
 }
+.changelog-intro {
+  padding-block: 75px 45px;
+  border-bottom: 1px solid var(--rule);
+}
+.preview-download {
+  max-width: 520px;
+}
+.preview-note {
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 16px 0 0;
+}
+.changelog-empty {
+  padding-block: 60px;
+  color: var(--muted);
+}
+.release-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.release {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 70px;
+  padding-block: 45px;
+  border-bottom: 1px solid var(--rule);
+}
+.release-meta {
+  display: flex;
+  gap: 22px;
+}
+.release-meta > span + span {
+  color: var(--rust);
+}
+.release h2 {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+.release-notes {
+  max-width: 570px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.release-notes :is(p, ul, ol) {
+  margin: 0 0 12px;
+}
+.release-notes ul,
+.release-notes ol {
+  padding-left: 20px;
+}
+.release-notes a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.release-notes h2,
+.release-notes h3 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 16px 0 8px;
+  font-family: inherit;
+}
 @media (min-width: 1400px) {
   .hero {
     padding-block-start: 100px;
@@ -508,7 +575,8 @@ h2 {
     inset: 43px 96px;
   }
   .chapter,
-  .essentials {
+  .essentials,
+  .release {
     gap: 30px;
     grid-template-columns: 1fr 2.5fr;
   }
@@ -628,6 +696,14 @@ h2 {
   }
   .site-footer nav {
     gap: 16px;
+  }
+  .changelog-intro {
+    padding-block: 45px 30px;
+  }
+  .release {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-block: 32px;
   }
 }
 @media (max-width: 370px) {

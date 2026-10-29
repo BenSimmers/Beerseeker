@@ -291,6 +291,17 @@ export const PromotionalLanding = () => {
               <AndroidBetaForm />
 
               <p className="text-sm text-gray-400">
+                Can&apos;t wait?{' '}
+                <Link
+                  href="/changelog"
+                  className="text-amber-400 underline underline-offset-4 hover:text-amber-300"
+                >
+                  Try the latest Android preview build
+                </Link>
+                .
+              </p>
+
+              <p className="text-sm text-gray-400">
                 In the meantime, grab the iOS version on the App Store to start
                 exploring!
               </p>

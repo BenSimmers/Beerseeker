@@ -210,6 +210,7 @@ export const SITE_CONFIG = {
   footer: {
     copyright: '© 2026 Beer Seeker. All rights reserved.',
     links: [
+      { label: 'Changelog', href: '/changelog' },
       {
         label: 'Privacy',
         href: 'https://gist.github.com/BenSimmers/bcc72b07118544af6491c932db773eed#file-privacy-policy-md',

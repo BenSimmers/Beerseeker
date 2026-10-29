@@ -50,7 +50,7 @@ const ChangelogPage = async () => {
           {latestApk && (
             <div className="preview-download">
               <a className="button" href={latestApk.apkUrl!}>
-                Download Android preview {latestApk.name}
+                Download latest Android build ({latestApk.name})
                 <ArrowDown size={19} aria-hidden="true" />
               </a>
               <p className="preview-note">
